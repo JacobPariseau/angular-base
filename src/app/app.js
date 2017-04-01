@@ -1,25 +1,13 @@
-import angular from 'angular';
+/** Load main angular module -- this needs to be an import so it will happen
+    before the rest of the imports run */
+import './appModule';
 
+/** Load router */
+import 'angular-ui-router';
+
+/** Load modules */
+import './login/login.config';
+import './profile/profile.config';
+
+/** Load styles */
 import '../style/app.css';
-
-let app = () => {
-  return {
-    template: require('./app.html'),
-    controller: 'AppCtrl',
-    controllerAs: 'app'
-  }
-};
-
-class AppCtrl {
-  constructor() {
-    this.url = 'https://github.com/preboot/angular-webpack';
-  }
-}
-
-const MODULE_NAME = 'app';
-
-angular.module(MODULE_NAME, [])
-  .directive('app', app)
-  .controller('AppCtrl', AppCtrl);
-
-export default MODULE_NAME;
